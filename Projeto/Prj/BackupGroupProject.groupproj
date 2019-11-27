@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{56B21237-93AB-4B17-ADCB-25C9A3A3D233}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BackupMongoDB.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BackupMongoDB">
+        <MSBuild Projects="BackupMongoDB.dproj"/>
+    </Target>
+    <Target Name="BackupMongoDB:Clean">
+        <MSBuild Projects="BackupMongoDB.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BackupMongoDB:Make">
+        <MSBuild Projects="BackupMongoDB.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BackupMongoDB"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BackupMongoDB:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BackupMongoDB:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
